@@ -24,6 +24,12 @@ export default Blog;
 //así evito usar el useEffect
 export const loaderBlog = async () =>{
  const res = await fetch ("https://jsonplaceholder.typicode.com/posts");
+ //mensaje de error
+ if (!res.ok) throw({
+    status: res.status,
+    statusText: 'No encontrado',
+   });
+   
  const posts = await res.json();
  return {posts};
 };
